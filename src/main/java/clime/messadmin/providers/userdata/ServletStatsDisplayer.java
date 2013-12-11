@@ -59,14 +59,14 @@ public class ServletStatsDisplayer extends BaseTabularDataProvider
 
 	protected String getTableCaption(String[] labels, Object[][] values, ClassLoader cl) {
 		NumberFormat numberFormatter = NumberFormat.getNumberInstance(I18NSupport.getAdminLocale());
-		String caption = I18NSupport.getLocalizedMessage(BUNDLE_NAME, cl, "table.caption", new Object[] {numberFormatter.format(values.length)});//$NON-NLS-1$
+		String caption = I18NSupport.getLocalizedMessage(BUNDLE_NAME, cl, "table.caption", numberFormatter.format(values.length));//$NON-NLS-1$
 		return caption;
 	}
 
 	protected String getDataTitle(Map data, ClassLoader cl) {
 		NumberFormat bytesFormatter = BytesFormat.getBytesInstance(I18NSupport.getAdminLocale(), true);
         long currentItemSize = SizeOfProvider.Util.getObjectSize(data, cl);
-		String result = I18NSupport.getLocalizedMessage(BUNDLE_NAME, cl, "title", new Object[] {bytesFormatter.format(currentItemSize)});//$NON-NLS-1$
+		String result = I18NSupport.getLocalizedMessage(BUNDLE_NAME, cl, "title", bytesFormatter.format(currentItemSize));//$NON-NLS-1$
 		return result;
 	}
 
